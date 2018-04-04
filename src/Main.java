@@ -32,7 +32,8 @@ public class Main {
 
     System.out.print( "Choose a method to run: \n" +
         "1: Buffon's needle experiment\n" +
-        "2: Finding pi via integrating a circle\n\n" +
+        "2: Finding pi via integrating a circle\n" +
+        "3: Both\n\n" +
         "Answer: ");
     int example = choice.nextInt();
 
@@ -55,6 +56,16 @@ public class Main {
         for (long num : nums)
           findPiViaIntegral( numSamples, num);
         break;
+
+      case 3:
+        System.out.println("\n\n______________________________________________________\n" +
+            "BUFFON'S NEEDLE SIMULATION RESULTS:\n");
+        for( long num : nums)
+          simulateBuffonsNeedle( numSamples, num);
+        System.out.println("\n\n______________________________________________________\n" +
+            "COMPUTATION OF PI VIA MONTE CARLO INTEGRATION RESULTS:\n");
+        for (long num : nums)
+          findPiViaIntegral( numSamples, num);
     }
 
 

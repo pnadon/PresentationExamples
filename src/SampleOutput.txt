@@ -1,0 +1,101 @@
+Choose a method to run:
+1: Buffon's needle experiment
+2: Finding pi via integrating a circle
+3: Both
+
+Answer: 3
+
+How many sample points do you want? ( suggested is 20)
+Answer: 20
+
+
+______________________________________________________
+BUFFON'S NEEDLE SIMULATION RESULTS:
+
+Using 20 trials with 100 samples per trial,
+expected value of pi = 3.134885381607429,
+with a standard deviation of 4.34E-1.
+Simulation of 2.00E3 thrown needles took 1.77E-3 seconds.
+
+Using 20 trials with 1000 samples per trial,
+expected value of pi = 3.159720843166407,
+with a standard deviation of 1.35E-1.
+Simulation of 2.00E4 thrown needles took 3.52E-3 seconds.
+
+Using 20 trials with 10000 samples per trial,
+expected value of pi = 3.158956931338233,
+with a standard deviation of 4.69E-2.
+Simulation of 2.00E5 thrown needles took 2.54E-2 seconds.
+
+Using 20 trials with 100000 samples per trial,
+expected value of pi = 3.1369454680735127,
+with a standard deviation of 1.25E-2.
+Simulation of 2.00E6 thrown needles took 1.46E-1 seconds.
+
+Using 20 trials with 1000000 samples per trial,
+expected value of pi = 3.143184239285075,
+with a standard deviation of 3.27E-3.
+Simulation of 2.00E7 thrown needles took 1.48E0 seconds.
+
+Using 20 trials with 10000000 samples per trial,
+expected value of pi = 3.141612975162268,
+with a standard deviation of 1.40E-3.
+Simulation of 2.00E8 thrown needles took 1.46E1 seconds.
+
+Using 20 trials with 100000000 samples per trial,
+expected value of pi = 3.141505414424442,
+with a standard deviation of 3.90E-4.
+Simulation of 2.00E9 thrown needles took 1.44E2 seconds.
+
+Using 20 trials with 1000000000 samples per trial,
+expected value of pi = 3.1415900068125904,
+with a standard deviation of 1.57E-4.
+Simulation of 2.00E10 thrown needles took 1.44E3 seconds.
+
+
+
+______________________________________________________
+COMPUTATION OF PI VIA MONTE CARLO INTEGRATION RESULTS:
+
+Using 20 trials with 100 samples per trial,
+expected value of pi = 3.1779999999999995,
+with a standard deviation of 1.59E-1.
+Computation of 2.00E3 points took 3.75E-4 seconds.
+
+Using 20 trials with 1000 samples per trial,
+expected value of pi = 3.1628,
+with a standard deviation of 5.58E-2.
+Computation of 2.00E4 points took 1.79E-3 seconds.
+
+Using 20 trials with 10000 samples per trial,
+expected value of pi = 3.1426199999999995,
+with a standard deviation of 1.14E-2.
+Computation of 2.00E5 points took 1.20E-2 seconds.
+
+Using 20 trials with 100000 samples per trial,
+expected value of pi = 3.1405939999999997,
+with a standard deviation of 5.00E-3.
+Computation of 2.00E6 points took 7.77E-2 seconds.
+
+Using 20 trials with 1000000 samples per trial,
+expected value of pi = 3.1419972,
+with a standard deviation of 1.45E-3.
+Computation of 2.00E7 points took 7.77E-1 seconds.
+
+Using 20 trials with 10000000 samples per trial,
+expected value of pi = 3.1414339599999996,
+with a standard deviation of 4.16E-4.
+Computation of 2.00E8 points took 7.69E0 seconds.
+
+Using 20 trials with 100000000 samples per trial,
+expected value of pi = 3.14154743,
+with a standard deviation of 1.59E-4.
+Computation of 2.00E9 points took 7.69E1 seconds.
+
+Using 20 trials with 1000000000 samples per trial,
+expected value of pi = 3.1415899156,
+with a standard deviation of 5.29E-5.
+Computation of 2.00E10 points took 7.58E2 seconds.
+
+
+Process finished with exit code 0
