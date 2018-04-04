@@ -1,3 +1,14 @@
+/*
+ * Main.java
+ *
+ * Philippe Nadon
+ * April 1, 2018
+ *
+ * Uses Monte Carlo methods to obtain calculated results
+ * See PresentationExamples.java for the methods themselves
+ */
+
+
 import java.text.DecimalFormat;
 
 public class Main {
@@ -63,7 +74,14 @@ public class Main {
 
   }
 
-  static void simulateBuffonsNeedle( int numSamples, long trialsPerSample){
+  /**
+   * Runs the Buffons Needle experiment multiple times
+   * to obtain an expected result
+   *
+   * @param numSamples The number of sample points to obtain
+   * @param trialsPerSample The number of thrown needles the method simulates per sample
+   */
+  private static void simulateBuffonsNeedle(int numSamples, long trialsPerSample){
 
     double[] samples = new double[numSamples];
     double mean = 0;
@@ -79,7 +97,14 @@ public class Main {
         "expected value of pi = " + mean + ", +/- " + 1.96*standardDeviation + " with 95% confidence.\n\n");
   }
 
-  static void findPiViaIntegral( int numSamples, long trialsPerSample){
+
+  /**
+   * Finds pi by integrating a circle via the Monte Carlo method numerous times
+   *
+   * @param numSamples The number of sample points to obtain
+   * @param trialsPerSample The number of thrown needles the method simulates per sample
+   */
+  private static void findPiViaIntegral(int numSamples, long trialsPerSample){
 
     double[] samples = new double[numSamples];
     double mean = 0;
@@ -95,13 +120,13 @@ public class Main {
         "expected value of pi = " + mean + ", +/- " + 1.96*standardDeviation + " with 95% confidence.\n\n");
   }
 
-  public static double getStandardDeviation( double mean, double[] samples) {
+  private static double getStandardDeviation(double mean, double[] samples) {
 
     int numSamples = samples.length;
     double variance = 0;
 
-    for (int sample = 0; sample < numSamples; sample++)
-      variance += (samples[sample] - mean) * (samples[sample] - mean);
+    for (double sample : samples)
+      variance += (sample - mean) * (sample - mean);
 
     variance =  variance / (double) numSamples;
     return Math.sqrt( variance);

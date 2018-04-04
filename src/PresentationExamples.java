@@ -1,4 +1,4 @@
-/**
+/*
  * PresentationExamples.java
  *
  * Philippe Nadon
@@ -46,22 +46,7 @@ public class PresentationExamples {
         counter++;
     }
 
-    double buffonPi = (double) totalTrials / (double) counter;
-    return buffonPi;
-
-    /*
-   Using 10 trials,         pi = 3.3333333333333335
-   Using 100 trials,        pi = 3.225806451612903
-   Using 1000 trials,       pi = 2.985074626865672
-   Using 10000 trials,      pi = 3.08546744831842
-   Using 100000 trials,     pi = 3.141196795979268
-   Using 1000000 trials,    pi = 3.142519546471579
-   Using 10000000 trials,   pi = 3.140230116062905
-   Using 100000000 trials,  pi = 3.141795646803355
-   Using 1000000000 trials, pi = 3.14140434477017
-
-                         Actual: 3.14159265359
-   */
+    return (double) totalTrials / (double) counter;
   }
 
   /**
@@ -92,21 +77,6 @@ public class PresentationExamples {
         counter++;
     }
 
-    double area = 4.0 * ((double) counter / (double) totalTrials);
-    return area;
-
-    /*
-    Using 10 trials,          area of circle = 3.6
-    Using 100 trials,         area of circle = 3.08
-    Using 1000 trials,        area of circle = 3.164
-    Using 10000 trials,       area of circle = 3.126
-    Using 100000 trials,      area of circle = 3.1384
-    Using 1000000 trials,     area of circle = 3.14156
-    Using 10000000 trials,    area of circle = 3.1418548
-    Using 100000000 trials,   area of circle = 3.14168044
-    Using 1000000000 trials,  area of circle = 3.141603956
-
-                                       Actual: 3.14159265359
-     */
+    return 4.0 * ((double) counter / (double) totalTrials);
   }
 }
