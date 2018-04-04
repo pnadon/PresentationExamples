@@ -28,7 +28,7 @@ public class PresentationExamples {
    *
    * @param totalTrials the total number of trials
    */
-  public static void getBuffonPi(long totalTrials) {
+  public static double getBuffonPi(long totalTrials) {
 
     Random rand = new Random();
     double DISTANCE = 2;
@@ -47,7 +47,7 @@ public class PresentationExamples {
     }
 
     double buffonPi = (double) totalTrials / (double) counter;
-    System.out.println("Using " + totalTrials + " trials, pi = " + buffonPi);
+    return buffonPi;
 
     /*
    Using 10 trials,         pi = 3.3333333333333335
@@ -77,7 +77,7 @@ public class PresentationExamples {
    * thus if the sqrt of xPos^2 + yPos^2 ( = to the distance)
    * is less than 1, so is xPos^2 + yPos^2, thus no square rooting is required.
    */
-  public static void integrateCircle(long totalTrials) {
+  public static double integrateCircle(long totalTrials) {
 
     Random rand = new Random();
     long counter = 0;
@@ -93,7 +93,7 @@ public class PresentationExamples {
     }
 
     double area = 4.0 * ((double) counter / (double) totalTrials);
-    System.out.println("Using " + totalTrials + " trials, area of circle = " + area);
+    return area;
 
     /*
     Using 10 trials,          area of circle = 3.6
