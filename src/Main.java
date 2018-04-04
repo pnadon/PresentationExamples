@@ -10,16 +10,16 @@
 
 
 import java.text.DecimalFormat;
+import java.util.Scanner;
 
 public class Main {
 
   public static void main(String[] args) {
 
-    DecimalFormat sciNot = new DecimalFormat("0.000E0");
+    DecimalFormat sciNot = new DecimalFormat("0.0E0");
+    Scanner choice = new Scanner(System.in);
 
     long[] nums = {
-        1,
-        10,
         100,
         1000,
         10000,
@@ -30,40 +30,30 @@ public class Main {
         1000000000,
     };
 
-    int example = 0; // Choose the example you want to run
-    int numSamples = 20; // Choose the number of sample points per method
+    System.out.print( "Choose a method to run: \n" +
+        "1: Buffon's needle experiment\n" +
+        "2: Finding pi via integrating a circle\n\n" +
+        "Answer: ");
+    int example = choice.nextInt();
+
+    System.out.print( "\nHow many sample points do you want? ( suggested is 20)\n" +
+        "Answer: ");
+    int numSamples = choice.nextInt();
 
     switch ( example) {
 
-      case 0:
-        System.out.println("______________________________________________________\n" +
+      case 1:
+        System.out.println("\n\n______________________________________________________\n" +
             "BUFFON'S NEEDLE SIMULATION RESULTS:\n");
-        for( long num : nums){
-          long startTime = System.nanoTime();
-
+        for( long num : nums)
           simulateBuffonsNeedle( numSamples, num);
-
-          long endTime = System.nanoTime();
-          long duration = (endTime - startTime)/1000000000;
-          System.out.println("Simulation of " + num*numSamples + " total needles took " +
-              sciNot.format(duration) + " seconds.\n");
-        }
         break;
 
-      case 1:
-        System.out.println("______________________________________________________\n" +
+      case 2:
+        System.out.println("\n\n______________________________________________________\n" +
             "COMPUTATION OF PI VIA MONTE CARLO INTEGRATION RESULTS:\n");
-        for (long num : nums){
-          long startTime = System.nanoTime();
-
+        for (long num : nums)
           findPiViaIntegral( numSamples, num);
-
-          long endTime = System.nanoTime();
-          long duration = (endTime - startTime)/1000000000;
-
-          System.out.println("Computation of " + num*numSamples + " points took "
-              + sciNot.format(duration) + " seconds.\n");
-        }
         break;
     }
 
@@ -83,8 +73,11 @@ public class Main {
    */
   private static void simulateBuffonsNeedle(int numSamples, long trialsPerSample){
 
+    long startTime = System.nanoTime();
+    DecimalFormat sciNot = new DecimalFormat("0.00E0");
     double[] samples = new double[numSamples];
     double mean = 0;
+
 
     for( int sample = 0; sample < numSamples; sample++){
       samples[sample] = PresentationExamples.getBuffonPi(trialsPerSample);
@@ -93,8 +86,15 @@ public class Main {
 
     double standardDeviation = getStandardDeviation( mean, samples);
 
-    System.out.print( "Using " + numSamples + " trials with " + trialsPerSample + " samples per trial,\n" +
-        "expected value of pi = " + mean + ", +/- " + 1.96*standardDeviation + " with 95% confidence.\n\n");
+    long endTime = System.nanoTime();
+    double duration = (endTime - startTime)/1000000000.0;
+
+    System.out.print( "Using " + numSamples + " trials with " + trialsPerSample + " samples per trial," +
+        "\nexpected value of pi = " + mean +
+        ",\nwith a standard deviation of " + sciNot.format(standardDeviation) + ".\n");
+
+    System.out.println("Simulation of " + sciNot.format(trialsPerSample*numSamples) + " thrown needles took "
+        + sciNot.format(duration) + " seconds.\n");
   }
 
 
@@ -106,6 +106,8 @@ public class Main {
    */
   private static void findPiViaIntegral(int numSamples, long trialsPerSample){
 
+    long startTime = System.nanoTime();
+    DecimalFormat sciNot = new DecimalFormat("0.00E0");
     double[] samples = new double[numSamples];
     double mean = 0;
 
@@ -116,8 +118,15 @@ public class Main {
 
     double standardDeviation = getStandardDeviation( mean, samples);
 
-    System.out.print( "Using " + numSamples + " trials with " + trialsPerSample + " samples per trial,\n" +
-        "expected value of pi = " + mean + ", +/- " + 1.96*standardDeviation + " with 95% confidence.\n\n");
+    long endTime = System.nanoTime();
+    double duration = (endTime - startTime)/1000000000.0;
+
+    System.out.print( "Using " + numSamples + " trials with " + trialsPerSample + " samples per trial," +
+        "\nexpected value of pi = " + mean +
+        ",\nwith a standard deviation of " + sciNot.format(standardDeviation) + ".\n");
+
+    System.out.println("Computation of " + sciNot.format(trialsPerSample*numSamples) + " points took "
+        + sciNot.format(duration) + " seconds.\n");
   }
 
   private static double getStandardDeviation(double mean, double[] samples) {
