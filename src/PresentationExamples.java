@@ -45,7 +45,7 @@ public class PresentationExamples {
       if (position <= horizProjection)
         counter++;
     }
-    if ( counter == 0 ) return -1;
+    if ( counter == 0 ) return 999999999;
     return (double) totalTrials / (double) counter;
   }
 
