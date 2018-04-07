@@ -26,16 +26,16 @@ public class PresentationExamples {
    * Thus, this equation simplifies to:
    * pi = 1 / p = N / n
    *
-   * @param totalTrials the total number of trials
+   * @param needlesThrown the total number of trials
    */
-  public static double getBuffonPi(long totalTrials) {
+  public static double getBuffonPi(long needlesThrown) {
 
     Random rand = new Random();
     double DISTANCE = 2;
     double LENGTH = 1;
     long counter = 0;
 
-    for (long trial = 0; trial < totalTrials; trial++) {
+    for (long trial = 0; trial < needlesThrown; trial++) {
 
       double orientation = Math.PI / 2.0 * rand.nextDouble();
       double horizProjection = LENGTH / 2.0 * Math.cos(orientation);
@@ -46,7 +46,7 @@ public class PresentationExamples {
         counter++;
     }
     if ( counter == 0 ) return 999999999;
-    return (double) totalTrials / (double) counter;
+    return (double) needlesThrown / (double) counter;
   }
 
   /**
@@ -56,18 +56,18 @@ public class PresentationExamples {
    * it is considered inside of the circle.
    * A counter keeps track of the number of points within the circle.
    *
-   * @param totalTrials the total number of trials.
+   * @param pointsPlaced the total number of trials.
    *
    * Keep in mind a radius of 1 is used,
    * thus if the sqrt of xPos^2 + yPos^2 ( = to the distance)
    * is less than 1, so is xPos^2 + yPos^2, thus no square rooting is required.
    */
-  public static double integrateCircle(long totalTrials) {
+  public static double integrateCircle(long pointsPlaced) {
 
     Random rand = new Random();
     long counter = 0;
 
-    for (long trial = 0; trial < totalTrials; trial++) {
+    for (long trial = 0; trial < pointsPlaced; trial++) {
 
       double yPos = rand.nextDouble();
       double xPos = rand.nextDouble();
@@ -77,6 +77,6 @@ public class PresentationExamples {
         counter++;
     }
 
-    return 4.0 * ((double) counter / (double) totalTrials);
+    return 4.0 * ((double) counter / (double) pointsPlaced);
   }
 }
