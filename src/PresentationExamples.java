@@ -45,6 +45,7 @@ public class PresentationExamples {
       if (position <= horizProjection)
         counter++;
     }
+    // If the counter equals 0, the return value is technically infinite.
     if ( counter == 0 ) return 999999999;
     return (double) needlesThrown / (double) counter;
   }
