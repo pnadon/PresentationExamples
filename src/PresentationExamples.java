@@ -42,12 +42,40 @@ public class PresentationExamples {
 
       double position = DISTANCE / 2.0 * rand.nextDouble();
 
+      // Can replace horizProjection with getHorizProjection for testing alternative method, may be incorrect!
       if (position <= horizProjection)
         counter++;
     }
     // If the counter equals 0, the return value is technically infinite.
     if ( counter == 0 ) return 999999999;
     return (double) needlesThrown / (double) counter;
+  }
+
+  /**
+   *
+   * Using the alternative method of getting the horizontal projection of a needle
+   *
+   * @return The calculated horizontal projection
+   */
+  private static double getHorizOrientation() {
+
+    Random rand = new Random();
+
+    // Initial points
+    double xPosHead = 2 * rand.nextDouble();
+    double yPosHead = 2 * rand.nextDouble();
+    double xPosTemp = 2 * rand.nextDouble();
+    double yPosTemp = 2 * rand.nextDouble();
+
+    // Slope calculations
+    double xLength = xPosHead - xPosTemp;
+    double yLength = yPosHead - yPosTemp;
+    double slope = yLength / xLength;
+
+    // Resized x position of tail
+    double xPosTail = 1.0 / Math.sqrt( 1.0 + slope * slope );
+
+    return Math.abs( ( xPosHead - xPosTail ) ) / 2;
   }
 
   /**
