@@ -51,6 +51,46 @@ public class PresentationExamples {
   }
 
   /**
+   * Similar to getBuffonPi,
+   * uses a different method of calculating orientation
+   *
+   * MAY BE INCORRECT!
+   *
+   * @param needlesThrown the total number of trials
+   */
+  public static double getBuffonPiAlt(long needlesThrown) {
+
+    Random rand = new Random();
+    long counter = 0;
+
+    for (long trial = 0; trial < needlesThrown; trial++) {
+
+      double xPos1 = 2 * rand.nextDouble();
+      double yPos1 = 2 * rand.nextDouble();
+      double xPos2 = 2 * rand.nextDouble();
+      double yPos2 = 2 * rand.nextDouble();
+
+      double xLength = xPos1 - xPos2;
+      double yLength = yPos1 - yPos2;
+
+      double slope = yLength / xLength;
+
+      double xPos3 = 1.0 / Math.sqrt( 1.0 + slope * slope );
+
+      double linePos = 2 * rand.nextDouble();
+
+      if ( xPos1 <= xPos3)
+        if( linePos >= xPos1 && linePos <= xPos3)
+          counter++;
+      if( xPos1 >= xPos3)
+        if( linePos >= xPos3 && linePos <= xPos1)
+          counter++;
+    }
+    if ( counter == 0 ) return 999999999;
+    return (double) needlesThrown / (double) counter;
+  }
+
+  /**
    * Simulates dropping random points into the first quadrant of an x-y plane.
    *
    * If the point's distance from the origin is less than 1,
