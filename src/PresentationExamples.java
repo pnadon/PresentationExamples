@@ -54,6 +54,13 @@ public class PresentationExamples {
    * Similar to getBuffonPi,
    * uses a different method of calculating orientation
    *
+   * Randomly chooses 2 points, one being a temporary point.
+   * The temporary point is used to calulate the given slope
+   * and is then "resized" so that the length from the head to tail is 1.
+   *
+   * The position of this line is then randomly chosen,
+   * and a counter keeps track of intersections
+   *
    * MAY BE INCORRECT!
    *
    * @param needlesThrown the total number of trials
@@ -65,25 +72,29 @@ public class PresentationExamples {
 
     for (long trial = 0; trial < needlesThrown; trial++) {
 
-      double xPos1 = 2 * rand.nextDouble();
-      double yPos1 = 2 * rand.nextDouble();
-      double xPos2 = 2 * rand.nextDouble();
-      double yPos2 = 2 * rand.nextDouble();
+      // Initial points
+      double xPosHead = 2 * rand.nextDouble();
+      double yPosHead = 2 * rand.nextDouble();
+      double xPosTemp = 2 * rand.nextDouble();
+      double yPosTemp = 2 * rand.nextDouble();
 
-      double xLength = xPos1 - xPos2;
-      double yLength = yPos1 - yPos2;
-
+      // Slope calculations
+      double xLength = xPosHead - xPosTemp;
+      double yLength = yPosHead - yPosTemp;
       double slope = yLength / xLength;
 
-      double xPos3 = 1.0 / Math.sqrt( 1.0 + slope * slope );
+      // Resized x position of tail
+      double xPosTail = 1.0 / Math.sqrt( 1.0 + slope * slope );
 
+      // The needle's position versus the line is randomly chosen
       double linePos = 2 * rand.nextDouble();
 
-      if ( xPos1 <= xPos3)
-        if( linePos >= xPos1 && linePos <= xPos3)
+      // Checks for intersections
+      if ( xPosHead <= xPosTail)
+        if( linePos >= xPosHead && linePos <= xPosTail)
           counter++;
-      if( xPos1 >= xPos3)
-        if( linePos >= xPos3 && linePos <= xPos1)
+      if( xPosHead >= xPosTail)
+        if( linePos >= xPosTail && linePos <= xPosHead)
           counter++;
     }
     if ( counter == 0 ) return 999999999;
